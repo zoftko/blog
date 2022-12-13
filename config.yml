@@ -1,0 +1,25 @@
+baseURL: https://blog.zoftko.com/
+languageCode: en-us
+title: ZoftKo
+theme: PaperMod
+menu:
+  main:
+      - name: Posts
+        url: /posts/
+      - name: Tags
+        url: /tags/
+      - name: Search
+        url: /search/
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+params:
+  env: production
+  description: "Electronics and Software Development projects."
+  author: Antonio
+  ShowCodeCopyButtons: true
+  socialIcons:
+    - name: github
+      url: "https://github.com/zoftko"
