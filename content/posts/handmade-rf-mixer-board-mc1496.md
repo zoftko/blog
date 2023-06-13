@@ -3,7 +3,6 @@ title: "Handmade RF Mixer Board with a MC1496"
 date: 2023-04-17T12:38:33-06:00
 tags: ["Electronics", "RF"]
 ---
-# Introduction
 In an RF context, a mixer is a device which "mixes" two frequencies, producing the sum
 and difference of said frequencies at its output. In the time domain it works as a multiplier,
 multiplying both input signals.

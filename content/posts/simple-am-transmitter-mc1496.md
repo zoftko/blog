@@ -3,7 +3,6 @@ title: "Simple AM Transmitter with a MC1496 IC"
 date: 2022-08-04T12:31:54-06:00
 tags: ["Electronics", "RF"]
 ---
-# Introduction
 The MC1496 is a Balanced Modulator/Demodulator, capable of producing amplitude modulated signals.
 Its internal structure resembles a Gilbert Cell biased by two current sources (one for each leg of the circuit), 
 both of them being biased by a single diode with a 500 Ohm resistor.
