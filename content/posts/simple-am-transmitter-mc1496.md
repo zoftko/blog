@@ -36,13 +36,13 @@ clean and strong signal.
 
 [From Foundations of Oscillator Design](https://www.amazon.com/Foundations-Oscillator-Circuit-Microwave-Hardcover/dp/1596931620)
 (talking about Clap, Colpitts and Pierce topologies):
-> The circuit biasing resistors and stray capacitances appear in shunt with
+> The circuit biasing resistors and stray capacitance appear in shunt with
 different elements in each of the three configurations. This makes the performance
 of the three configurations different. The Pierce configuration is usually the most
 desirable.
 
 And from [Crystal Oscillator Circuits](https://www.amazon.com/gp/product/0471874019):
-> It has very good short-term stability because the crystal’s source and load impedances are mostly capacitive rather
+    > It has very good short-term stability because the crystal’s source and load impedance are mostly capacitive rather
 than resistive, which give it a high in-circuit Q. 
 The circuit provides a large output signal and simultaneously drives the crystal at a low power level.
 
