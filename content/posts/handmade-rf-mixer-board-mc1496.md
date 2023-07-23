@@ -27,9 +27,9 @@ guidelines are:
 * Signals need a plane to couple to for effective transmission and good signal integrity, this usually
   involves a ground plane below the signal traces.
 
-Therefore I decided to use a one sided copper board and copper tape. The copper in the board
+Therefore, I decided to use a one-sided copper board and copper tape. The copper in the board
 will act as the ground plane, and the copper tape on top will ideally behave as a microstrip. The
-board has a 1.6mm thickness, which means a 3.2mm wide strip of copper tape should behave as a 50 ohm
+board has a 1.6 mm thickness, which means a 3.2 mm wide strip of copper tape should behave as a 50 ohm
 transmission line (approx.).
 
 The KiCad design files this board is based on can be found [on this repository](https://github.com/crazybolillo/pcrap/tree/main/ev1496).

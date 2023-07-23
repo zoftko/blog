@@ -6,7 +6,7 @@ tags: ["Electronics", "ARM", "STM32", "USB"]
 Implementing your own bare metal USB stack may provide certain benefits like little to no 
 dependencies, smaller code size, better understanding of internals and suffering. 
 
-This article documents the process I went through to manually setup and get the USB
+This article documents the process I went through to manually set up and get the USB
 core of an STM32F401CCU6 to do what I wanted. My goal was to successfully return a device descriptor.
 Once I got that working I had a greater appreciation for TinyUSB and went with it, however this was
 still a ~~painful~~ great learning experience.
@@ -54,11 +54,11 @@ RCC->CFGR |= RCC_CFGR_SW_PLL;
 while ((RCC->CFGR & RCC_CFGR_SWS) == 0) continue;
 ```
 
-You must ensure your clocks are correctly setup. Failing to do so with result in a bunch of wasted
-hours finding the source of errors which may simply caused by a wrong clock setup.
+You must ensure your clocks are correctly setup. Failing to do so will result in a bunch of wasted
+hours finding the source of errors which may simply be caused by a wrong clock setup.
 
 ## Peripheral setup
-The next step is to setup the GPIOs that will function as D+ and D-. They must be set
+The next step is to set up the GPIOs that will function as D+ and D-. They must be set
 to their alternate function for USB. VBUS sensing was also disabled and USB clock needs to be
 enabled as well.
 
@@ -172,7 +172,7 @@ on every read.
 
 ### Writing
 Just as reading, the same tips apply to writing to a FIFO. It is done in 4 byte words and no address
-needs to be incremented, the following implementation may be improved but servers as a start:
+needs to be incremented, the following implementation may be improved but serves as a start:
 
 ```c
 void usbRawWrite(volatile uint32_t* fifo, void* data, uint8_t len) {
@@ -208,7 +208,7 @@ void usbRawWrite(volatile uint32_t* fifo, void* data, uint8_t len) {
 
 ## Endpoints
 The setup for EP0 endpoints mostly consists of setting some parameters like their sizes and NAK
-acknowledge status, any interrupts wished to be handled must also be set.
+behavior, any interrupts wished to be handled must also be set.
 
 ```c
 USB_OTG_INEndpointTypeDef* usbEpin(uint8_t ep) {
@@ -237,7 +237,7 @@ This is where the fun starts. The complete flow looks something like this:
 
 1. Device is plugged in. `USBRST` is received since the host always resets new devices.
    Use this interrupt to reset your stack to a known initial state.
-2. Reset finished. `ENUMDNEM` received. Setup your endpoints.
+2. Reset finished. `ENUMDNEM` received. Set up your endpoints.
 3. A SETUP request is sent from the host (OUT). `RXFLVLM` signals this. Data is read from the RX
    FIFO.
 4. `RXFLVLM` is triggered again, this time signaling the SETUP status is complete. Pop the RX FIFO
@@ -265,7 +265,7 @@ few items which may prove useful.
 It was also of great help, chances are your device is supported by this library and you can read
 the source code for the driver.
 
-* During implementation I had a horrible bug which took me a week to solve. The device was successfully
+* During implementation, I had a horrible bug which took me a week to solve. The device was successfully
 writing the descriptor, but was not ACK the Status OUT packet which caused transactions to timeout. You
 can read the whole adventure on the [ST community forums](https://community.st.com/t5/stm32-mcu-products/ep0-in-transfer-times-out/td-p/573140). 
 Hint: I failed to follow the datasheet and was using an RXFIFO which was not big enough.
@@ -289,12 +289,12 @@ sudo dmesg -w
 ```
 
 Try plugging working devices to see how they behave and respond to control transfers. Then connect
-your device and compare their behavior. The tail mentioned above which can be read on the ST forums
-shows how I debugged my way out of the situation.
+your device and compare their behavior. The tale mentioned above shows how I debugged my way
+out of the situation.
 
-dmesg on the other hand will probably state one too many times that it failed to read the device
-descriptor. It is useful to know how the kernel is reacting to the device and what address it was
-assigned (remember at the start it will have 0 as its address).
+`dmesg` on the other hand will probably state one too many times that it failed to read the device
+descriptor. It is useful for knowing how the kernel is reacting to the device and what address it was
+assigned (remember initially devices respond to address 0).
 
 # Conclusion
 Implementing a bare metal USB stack is a painful task and as long as there are good quality USB
