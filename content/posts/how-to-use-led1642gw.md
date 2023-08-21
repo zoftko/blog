@@ -13,7 +13,7 @@ a serial link. This article documents how to achieve such control with the help 
 microcontroller.
 
 The end result is the following, a constant fade in/out of LEDs achieved by varying the brightness
-to which the LED1642GW channels are set. 
+to which the LED1642GW channels are set.
 
 *Note that the blinking can't be perceived by the human eye but gets picked up by the camera.*
 
@@ -106,7 +106,7 @@ void TIM2_IRQHandler(void) {
             le_off();
             clock_off();
             // Turn off timer and notify message has been sent
-            TIM2->CR1 &= ~(TIM_CR1_CEN); 
+            TIM2->CR1 &= ~(TIM_CR1_CEN);
             vTaskNotifyGiveFromISR(led1642TaskHandle, NULL);
         }
     }
@@ -142,4 +142,3 @@ other souls.
   than enough.
 
 Finally, the complete [code implementation can be consulted here](https://github.com/crazybolillo/stm32f401xc/blob/main/src/led1642.c).
-

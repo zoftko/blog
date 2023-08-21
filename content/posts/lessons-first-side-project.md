@@ -29,7 +29,7 @@ integration.
 I don't like designing UIs, I can appreciate a well designed one, but usually prefer to stick with
 CLIs. This makes designing the front end very tedious. Once I get a general idea it is not too hard
 to code it. I used [Thymeleaf](https://www.thymeleaf.org/), [daisyUI](https://daisyui.com/)
-and [htmx](https://htmx.org/). 
+and [htmx](https://htmx.org/).
 
 With this I was able to get an acceptable (I think) UI, however there was not even a proper
 landing page and I was not really happy with it. This was an itch I was able to sweep under the rug
@@ -84,4 +84,3 @@ have a finished side project with acceptable quality, you really need to keep it
 I may come back in the future to try something similar but with a much simpler workflow. For the
 time being I am happy with the things I learnt. It sounds cheesy but it does seem like after all,
 failure is the quickest path to success.
-

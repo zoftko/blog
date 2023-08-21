@@ -18,7 +18,7 @@ with SMD components (this was my first time soldering them).
 
 # Building the board
 Board layout is very important when designing high speed or high frequency circuits. Some basic
-guidelines are: 
+guidelines are:
 
 * Traces need to be kept as short as possible to minimize the effects associated with transmission lines.
 * Component leads should be kept short, or else they will act as inductors. Their parasitic
