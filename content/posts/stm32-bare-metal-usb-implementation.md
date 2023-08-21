@@ -3,8 +3,8 @@ title: "STM32 Bare Metal USB Implementation"
 date: 2023-07-20T23:35:19-06:00
 tags: ["Electronics", "ARM", "STM32", "USB"]
 ---
-Implementing your own bare metal USB stack may provide certain benefits like little to no 
-dependencies, smaller code size, better understanding of internals and suffering. 
+Implementing your own bare metal USB stack may provide certain benefits like little to no
+dependencies, smaller code size, better understanding of internals and suffering.
 
 This article documents the process I went through to manually set up and get the USB
 core of an STM32F401CCU6 to do what I wanted. My goal was to successfully return a device descriptor.
@@ -12,7 +12,7 @@ Once I got that working I had a greater appreciation for TinyUSB and went with i
 still a ~~painful~~ great learning experience.
 
 It is expected for the reader to already be familiar with USB as a protocol,
-to get up to speed there are great resources like 
+to get up to speed there are great resources like
 [USB Made Simple](https://www.usbmadesimple.co.uk/).
 
 # Implementation
@@ -22,7 +22,7 @@ for most other chips.
 ## Clock setup
 First step is to produce a 48 MHz clock. The board I had uses a 25 MHz crystal which will be used
 as a source. The system clock will also be derived from the PLL and set to 72 MHz. This last step
-is optional. Be warned that **setting the system clock too low will prevent the USB core from correct 
+is optional. Be warned that **setting the system clock too low will prevent the USB core from correct
 functioning**. The exact frequency can be found on your MCU manual, in this case the AHB frequency
 should be higher than 14.2 MHz. Here is the code used for setup:
 
@@ -33,7 +33,7 @@ while ((FLASH->ACR & FLASH_ACR_LATENCY) != FLASH_ACR_LATENCY_2WS) continue;
 
 // Output the clock to MCO1 for verification
 // Set prescaler for APB1 as to not exceed the max frequency recommended (42 MHZ)
-RCC->CFGR |= (0x06 << RCC_CFGR_MCO1PRE_Pos) | (0x03 << RCC_CFGR_MCO1_Pos) | 
+RCC->CFGR |= (0x06 << RCC_CFGR_MCO1PRE_Pos) | (0x03 << RCC_CFGR_MCO1_Pos) |
     (0x04 << RCC_CFGR_PPRE1_Pos);
 
 // Turn on HSE (crystal oscillator) which will be used as the PLL source
@@ -267,7 +267,7 @@ the source code for the driver.
 
 * During implementation, I had a horrible bug which took me a week to solve. The device was successfully
 writing the descriptor, but was not ACK the Status OUT packet which caused transactions to timeout. You
-can read the whole adventure on the [ST community forums](https://community.st.com/t5/stm32-mcu-products/ep0-in-transfer-times-out/td-p/573140). 
+can read the whole adventure on the [ST community forums](https://community.st.com/t5/stm32-mcu-products/ep0-in-transfer-times-out/td-p/573140).
 Hint: I failed to follow the datasheet and was using an RXFIFO which was not big enough.
 
 ## Full code
@@ -306,4 +306,3 @@ and USB protocol itself. At the time it will seem that there is no information a
 will read over and over any resources you can find on implementing USB manually. Over time it gets
 easier and once you are on the other side it does seem obvious. Writing this post now makes it seem
 like it wasn't that bad after all. Hindsight is always 20/20.
-

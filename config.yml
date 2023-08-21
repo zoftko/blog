@@ -37,4 +37,3 @@ params:
     URL: "https://github.com/zoftko/blog/blob/main/content"
     text: "Suggest changes"
     appendFilePath: true
-

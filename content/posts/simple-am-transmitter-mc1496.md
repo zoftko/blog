@@ -4,7 +4,7 @@ date: 2022-08-04T12:31:54-06:00
 tags: ["Electronics", "RF"]
 ---
 The MC1496 is a Balanced Modulator/Demodulator, capable of producing amplitude modulated signals.
-Its internal structure resembles a Gilbert Cell biased by two current sources (one for each leg of the circuit), 
+Its internal structure resembles a Gilbert Cell biased by two current sources (one for each leg of the circuit),
 both of them being biased by a single diode with a 500 Ohm resistor.
 
 {{< figure src="/img/simple-am-transmitter-mc1496/internals.png" title="MC1496 - Internal Schematic" align="center" >}}
@@ -23,7 +23,7 @@ At least three components are required in order to generate an AM signal:
 * Mixer (modulator)
 
 In order for the transmitter to be heard by a commercial receiver, it needs to transmit in the AM commercial band
-(illegal without a license), this band normally goes from 
+(illegal without a license), this band normally goes from
 [530 to 1700 MHz](https://en.wikipedia.org/wiki/Medium_wave#Spectrum_and_channel_allocation).
 I have no regards for the law, and this design does not have enough power nor an antenna good enough (would need to
 be at least 75 m long) to interfere with commercial broadcasts, so a 1 MHz crystal is used for generating the carrier
@@ -43,11 +43,11 @@ desirable.
 
 And from [Crystal Oscillator Circuits](https://www.amazon.com/gp/product/0471874019):
     > It has very good short-term stability because the crystal’s source and load impedance are mostly capacitive rather
-than resistive, which give it a high in-circuit Q. 
+than resistive, which give it a high in-circuit Q.
 The circuit provides a large output signal and simultaneously drives the crystal at a low power level.
 
 The output is taken from the base of the transistor, where there exists a (relatively) big capacitance, so any
-extra stray capacitance introduced by the next stage won't affect the oscillator too much. 
+extra stray capacitance introduced by the next stage won't affect the oscillator too much.
 
 The next stage consists of a common collector buffer, being biased by a constant current source in an attempt to
 provide a high input impedance, trying to isolate the oscillator as much as possible from the next stages.
@@ -73,7 +73,7 @@ overview of the guidelines and the design steps to follow them were:
 3. Modulating pins(1, 4) must be 2.7V below the carrier pins.
 4. The bias pin(5) must be 2.7V below the modulating pins.
 
-This leaves very little headroom, and it's why inductors were used at the output stage. 
+This leaves very little headroom, and it's why inductors were used at the output stage.
 They act as resistances at the operating frequency, providing the gain necessary, but act as a short circuit when
 it comes to DC biasing.
 
@@ -81,7 +81,7 @@ Bias current (I5) was chosen to be 1mA, considering the diode forward voltage to
 temperature, the voltage at the bias pin turns out to be 1.25 V.
 
 Knowing the max and min voltage limits, a resistor network was added to provide bias to the two missing stages
-of the circuit. 
+of the circuit.
 
 Audio is inserted into pin 4, where a variable resistor controls the modulation index.
 [This video](https://www.youtube.com/watch?v=38OQub2Vi2Q) explains how varying the bias voltage affects the
