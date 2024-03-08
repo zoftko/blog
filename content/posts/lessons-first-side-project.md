@@ -1,6 +1,7 @@
 ---
 title: "Lessons from my first side project"
 date: 2024-03-07T10:56:17-03:00
+tags: ["Software"]
 ---
 The following are a few reflections on the death of my first serious [side project](https://github.com/zoftko/felf).
 While it technically worked and was deployed, I never got it to a point where I could call it
