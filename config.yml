@@ -31,8 +31,8 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/zoftko"
-    - name: gitlab
-      url: "https://gitlab.com/zoftko"
+    - name: youtube
+      url: "https://www.youtube.com/@zoftko5970"
   editPost:
     URL: "https://github.com/zoftko/blog/blob/main/content"
     text: "Suggest changes"
