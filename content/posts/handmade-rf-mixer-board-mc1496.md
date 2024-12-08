@@ -10,7 +10,7 @@ multiplying both input signals.
 There are several circuits capable of behaving as mixers, this article will cover the design
 and behavior of a mixer using a Gilbert Cell encapsulated in a MC1496 IC. This post assumes
 previous knowledge of the MC1496 and its applications. To familiarize yourself with the chip you can
-read this [post about it]({{< ref "/simple-am-transmitter-mc1496.md" >}} "Simple AM Transmitter with a MC1496").
+read this [post about it]({{< ref "/posts/simple-am-transmitter-mc1496.md" >}} "Simple AM Transmitter with a MC1496").
 
 This handmade board is the first step to creating a proper evaluation board for this chip. I don't trust myself so
 ordering a batch of PC boards with no prototype seemed dangerous. It is also a great excuse to play around
