@@ -25,8 +25,8 @@ params:
   homeInfoParams:
     title: ZoftKo Blog
     content: This blog documents the development of electronics/software projects. Most of the
-      source code involved in said projects can be found in the git providers linked below.
-      Information provided here is by no means authoritative yet it may be of value to persons
+      source code involved in said projects can be found in the git provider linked below.
+      Information provided here is by no means authoritative yet it may be of value to people
       developing similar projects. If you see any mistakes/inaccuracies feel free to suggest changes.
   socialIcons:
     - name: github
